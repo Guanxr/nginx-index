@@ -2,6 +2,11 @@
 <html>
 <head>
 <title>Welcome to nginx!</title>
+    <script src="https://cdn.authing.co/packages/guard/5.1.0/guard.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.authing.co/packages/guard/5.1.0/guard.min.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <style>
     body {
         width: 35em;
@@ -11,6 +16,25 @@
 </style>
 </head>
 <body>
+    <div id="authing-guard-container"></div>
+
+    <script>
+      const guard = new GuardFactory.Guard({
+        // 你可以前往 Authing 控制台的本应用详情页查看你的 APP ID
+        appId: "6385a9ce990ece17d6fa9a0a",
+
+        // 如果你使用的是私有化部署的 Authing 服务，需要传入自定义 host，如:
+        // host: 'https://my-authing-app.example.com',
+
+        // 默认情况下，会使用你在 Authing 控制台中配置的第一个回调地址为此次认证使用的回调地址。
+        // 如果你配置了多个回调地址，也可以手动指定（此地址也需要加入到应用的「登录回调 URL」中）：
+        // redirectUri: "YOUR_REDIRECT_URI"
+      });
+
+      // 挂载 Authing Guard
+      guard.start("#authing-guard-container");
+        console.log("guard instance: ", guard);
+    </script>
 <h1>Welcome to nginx!</h1>
 <p>If you see this page, the nginx web server is successfully installed and
 working. Further configuration is required.</p>
